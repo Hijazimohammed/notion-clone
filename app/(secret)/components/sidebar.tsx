@@ -11,7 +11,7 @@ export const Sidebar = () => {
   const navbarRef = useRef<ElementRef<'div'>>(null);
   const isResizing = useRef(false);
 
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(isMobile);
   const [isResetting, setIsResetting] = useState(false);
 
   useEffect(() => {
@@ -87,7 +87,10 @@ export const Sidebar = () => {
           isMobile && 'w-0'
         )}>
         <div
-          className='h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition'
+          className={cn(
+            'h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition',
+            isMobile && 'opacity-100'
+          )}
           role='button'
           onClick={collapse}>
           <ChevronsLeft className='h-6 w-6' />
